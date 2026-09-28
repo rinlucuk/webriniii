@@ -1,0 +1,2104 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>profile riniii</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Arial", sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #ffd6e7, #fff0f7);
+            color: #6b3d52;
+            min-height: 100vh;
+        }
+
+        /* Navbar */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            padding: 15px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 3px 15px rgba(220, 100, 150, 0.15);
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+            color: #e85d91;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #75475b;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #e85d91;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 50px 8%;
+        }
+
+        .profile-card {
+            width: 100%;
+            max-width: 1100px;
+            min-height: 500px;
+            background: rgba(255, 255, 255, 0.82);
+            border-radius: 35px;
+            padding: 55px 65px;
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: space-between;
+            align-items: center;
+            gap: 55px;
+            box-shadow: 0 15px 40px rgba(211, 95, 140, 0.2);
+            border: 3px solid #fff;
+            overflow: hidden;
+        }
+
+        /* Foto */
+        .photo-box {
+            width: 330px;
+            height: 330px;
+            flex-shrink: 0;
+            border-radius: 50%;
+            background: #ffc1d9;
+            border: 10px solid white;
+            box-shadow:
+                0 0 0 8px rgba(255, 182, 211, 0.35),
+                0 15px 35px rgba(200, 80, 130, 0.28);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .photo-box::before {
+            content: "";
+            position: absolute;
+            inset: -14px;
+            border-radius: 50%;
+            border: 3px solid rgba(255, 178, 214, 0.8);
+            box-shadow:
+                0 0 12px rgba(232, 93, 145, 0.6),
+                0 0 28px rgba(255, 167, 207, 0.6),
+                0 0 52px rgba(255, 214, 232, 0.55);
+            animation: photoAura 2.8s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .photo-box::after {
+            content: "✦  ♡  ✧  ♡  ✦";
+            position: absolute;
+            inset: -27px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 137, 189, 0.88);
+            font-size: 17px;
+            letter-spacing: 18px;
+            white-space: nowrap;
+            text-shadow:
+                0 0 7px rgba(255, 115, 176, 0.95),
+                0 0 18px rgba(255, 183, 218, 0.9);
+            animation: photoSparkle 5s linear infinite;
+            pointer-events: none;
+            z-index: 3;
+        }
+
+        .photo-box:hover {
+            box-shadow:
+                0 0 16px rgba(255, 160, 205, 0.85),
+                0 0 34px rgba(232, 93, 145, 0.62),
+                0 0 68px rgba(255, 205, 228, 0.72),
+                0 18px 42px rgba(200, 80, 130, 0.28);
+            transform: translateY(-3px) scale(1.015);
+            transition: 0.45s ease;
+        }
+
+        @keyframes photoAura {
+            0%, 100% {
+                transform: scale(0.98);
+                opacity: 0.48;
+                filter: blur(0px);
+            }
+            50% {
+                transform: scale(1.045);
+                opacity: 1;
+                filter: blur(0.2px);
+            }
+        }
+
+        @keyframes photoSparkle {
+            0% {
+                transform: rotate(0deg) scale(0.98);
+                opacity: 0.45;
+            }
+            50% {
+                transform: rotate(180deg) scale(1.05);
+                opacity: 1;
+            }
+            100% {
+                transform: rotate(360deg) scale(0.98);
+                opacity: 0.45;
+            }
+        }
+
+        .photo-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-text h1 {
+            font-size: 48px;
+            color: #df4f87;
+            margin-bottom: 10px;
+        }
+
+        .hero-text h2 {
+            font-size: 20px;
+            color: #9d5b76;
+            margin-bottom: 20px;
+        }
+
+        .hero-text p {
+            line-height: 1.8;
+            font-size: 16px;
+        }
+
+        .button {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 13px 25px;
+            border-radius: 30px;
+            background: #ed6c9d;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(220, 90, 140, 0.3);
+        }
+
+        .button:hover {
+            transform: translateY(-3px);
+            background: #d94f83;
+        }
+
+        /* Section */
+        section {
+            padding: 80px 8%;
+        }
+
+        .title {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .title h2 {
+            font-size: 32px;
+            color: #df4f87;
+        }
+
+        .title p {
+            margin-top: 8px;
+            color: #9d657c;
+        }
+
+        /* Cards */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.85);
+            padding: 30px;
+            border-radius: 25px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(210, 90, 140, 0.12);
+            border: 2px solid white;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-7px);
+        }
+
+        .card .icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            color: #df4f87;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            line-height: 1.6;
+        }
+
+        /* Biodata */
+        .biodata {
+            max-width: 750px;
+            margin: auto;
+            background: white;
+            padding: 35px;
+            border-radius: 30px;
+            box-shadow: 0 8px 25px rgba(210, 90, 140, 0.12);
+        }
+
+        .bio-row {
+            display: flex;
+            padding: 14px 0;
+            border-bottom: 1px solid #f5d7e3;
+        }
+
+        .bio-row:last-child {
+            border-bottom: none;
+        }
+
+        .bio-label {
+            width: 35%;
+            font-weight: bold;
+            color: #df4f87;
+        }
+
+        .bio-value {
+            width: 65%;
+        }
+
+        /* Social */
+        .social {
+            text-align: center;
+        }
+
+        .social a {
+            display: inline-block;
+            margin: 8px;
+            padding: 12px 20px;
+            border-radius: 25px;
+            background: white;
+            color: #df4f87;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(210,90,140,0.12);
+            transition: 0.3s;
+        }
+
+        .social a:hover {
+            background: #ed6c9d;
+            color: white;
+        }
+
+
+        /* Tombol Sekolah + efek aura */
+        .school-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            border: 2px solid #ffd0e1;
+            border-radius: 25px;
+            background: rgba(255,255,255,0.95);
+            color: #df4f87;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s ease;
+            box-shadow: 0 5px 15px rgba(210,90,140,0.12);
+        }
+
+        .school-button:hover {
+            transform: translateY(-3px);
+            box-shadow:
+                0 0 12px rgba(232,93,145,0.55),
+                0 0 28px rgba(255,182,211,0.7);
+        }
+
+        .school-button.active {
+            animation: buttonAura 1.4s ease-in-out infinite;
+            background: #ed6c9d;
+            color: white;
+            border-color: #ed6c9d;
+        }
+
+        @keyframes buttonAura {
+            0%, 100% {
+                box-shadow:
+                    0 0 8px rgba(237,108,157,0.55),
+                    0 0 18px rgba(255,170,205,0.45);
+            }
+            50% {
+                box-shadow:
+                    0 0 18px rgba(237,108,157,0.8),
+                    0 0 42px rgba(255,170,205,0.8);
+            }
+        }
+
+
+        .hero-school-button {
+            margin-top: 12px;
+        }
+
+        /* Modal sekolah */
+        .school-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            background: rgba(86, 36, 59, 0.52);
+            backdrop-filter: blur(8px);
+            padding: 30px;
+            overflow-y: auto;
+        }
+
+        .school-modal.active {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: modalFade 0.35s ease;
+        }
+
+        @keyframes modalFade {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .school-content {
+            width: 100%;
+            max-width: 950px;
+            background: linear-gradient(145deg, #fffafd, #fff0f7);
+            border-radius: 30px;
+            padding: 35px;
+            position: relative;
+            border: 2px solid rgba(255,255,255,0.95);
+            box-shadow:
+                0 0 18px rgba(255, 166, 203, 0.65),
+                0 0 50px rgba(232, 93, 145, 0.35),
+                0 20px 70px rgba(90, 30, 60, 0.35);
+            animation: schoolGlow 2.2s ease-in-out infinite;
+        }
+
+        @keyframes schoolGlow {
+            0%, 100% {
+                box-shadow:
+                    0 0 15px rgba(255, 166, 203, 0.55),
+                    0 0 35px rgba(232, 93, 145, 0.28),
+                    0 20px 70px rgba(90, 30, 60, 0.28);
+            }
+            50% {
+                box-shadow:
+                    0 0 28px rgba(255, 166, 203, 0.9),
+                    0 0 70px rgba(232, 93, 145, 0.48),
+                    0 20px 75px rgba(90, 30, 60, 0.34);
+            }
+        }
+
+        .school-close {
+            position: absolute;
+            right: 22px;
+            top: 15px;
+            border: none;
+            background: #ffe0eb;
+            color: #df4f87;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            font-size: 22px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .school-close:hover {
+            transform: rotate(90deg) scale(1.08);
+            box-shadow: 0 0 18px rgba(232,93,145,0.65);
+        }
+
+        .school-title {
+            text-align: center;
+            color: #df4f87;
+            font-size: 30px;
+            margin-bottom: 25px;
+        }
+
+        .school-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .school-card {
+            background: rgba(255,255,255,0.93);
+            border-radius: 22px;
+            padding: 15px;
+            text-align: center;
+            border: 2px solid #ffe1ec;
+            box-shadow: 0 8px 22px rgba(210,90,140,0.1);
+            transition: 0.35s ease;
+        }
+
+        .school-card:hover {
+            transform: translateY(-8px);
+            box-shadow:
+                0 0 16px rgba(232,93,145,0.5),
+                0 0 35px rgba(255,182,211,0.75),
+                0 14px 28px rgba(210,90,140,0.16);
+        }
+
+        .school-photo {
+            width: 100%;
+            height: 180px;
+            border-radius: 16px;
+            background: #ffcfe1;
+            border: 2px dashed #e85d91;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #a65376;
+            font-size: 13px;
+            margin-bottom: 15px;
+        }
+
+        .school-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .school-card h3 {
+            color: #df4f87;
+            margin-bottom: 7px;
+        }
+
+        .school-card p {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+
+        /* Glow tambahan di seluruh website */
+        .logo {
+            text-shadow: 0 0 8px rgba(232, 93, 145, 0.45);
+        }
+
+        nav a:hover {
+            text-shadow:
+                0 0 8px rgba(232, 93, 145, 0.75),
+                0 0 18px rgba(255, 182, 211, 0.8);
+        }
+
+        .profile-card:hover {
+            box-shadow:
+                0 15px 40px rgba(211, 95, 140, 0.2),
+                0 0 28px rgba(255, 182, 211, 0.55);
+            transition: 0.4s ease;
+        }
+
+        .hero-text h1 {
+            text-shadow:
+                0 0 8px rgba(232, 93, 145, 0.35),
+                0 0 20px rgba(255, 182, 211, 0.35);
+        }
+
+        .title h2 {
+            text-shadow:
+                0 0 8px rgba(232, 93, 145, 0.4),
+                0 0 18px rgba(255, 182, 211, 0.35);
+        }
+
+        .button:hover {
+            box-shadow:
+                0 0 12px rgba(237, 108, 157, 0.7),
+                0 0 30px rgba(255, 182, 211, 0.75),
+                0 5px 18px rgba(220, 90, 140, 0.35);
+        }
+
+        .card:hover {
+            box-shadow:
+                0 0 14px rgba(232, 93, 145, 0.45),
+                0 0 30px rgba(255, 182, 211, 0.65),
+                0 8px 25px rgba(210, 90, 140, 0.15);
+        }
+
+        .card .icon {
+            transition: 0.35s ease;
+        }
+
+        .card:hover .icon {
+            filter:
+                drop-shadow(0 0 7px rgba(232, 93, 145, 0.7))
+                drop-shadow(0 0 16px rgba(255, 182, 211, 0.8));
+            transform: scale(1.08);
+        }
+
+        .biodata:hover {
+            box-shadow:
+                0 0 16px rgba(232, 93, 145, 0.35),
+                0 0 35px rgba(255, 182, 211, 0.5),
+                0 8px 25px rgba(210, 90, 140, 0.12);
+            transition: 0.4s ease;
+        }
+
+        .bio-row:hover {
+            text-shadow: 0 0 7px rgba(232, 93, 145, 0.28);
+        }
+
+        .social a:hover {
+            box-shadow:
+                0 0 12px rgba(232, 93, 145, 0.65),
+                0 0 28px rgba(255, 182, 211, 0.75),
+                0 5px 15px rgba(210,90,140,0.18);
+        }
+
+        footer {
+            box-shadow:
+                0 -5px 25px rgba(237, 108, 157, 0.4),
+                0 0 25px rgba(255, 182, 211, 0.35);
+        }
+
+        .favorite-photo:hover,
+        .school-photo:hover {
+            box-shadow:
+                0 0 14px rgba(232, 93, 145, 0.55),
+                0 0 28px rgba(255, 182, 211, 0.7);
+            transition: 0.35s ease;
+        }
+
+
+        /* My Friends */
+        
+
+        @keyframes friendSoftGlow {
+            0%, 100% {
+                box-shadow:
+                    0 0 8px rgba(232,93,145,0.35),
+                    0 0 18px rgba(255,182,211,0.35);
+            }
+            50% {
+                box-shadow:
+                    0 0 18px rgba(232,93,145,0.7),
+                    0 0 38px rgba(255,182,211,0.75);
+            }
+        }
+
+        .friend-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 110;
+            background: rgba(86,36,59,0.55);
+            backdrop-filter: blur(9px);
+            padding: 30px;
+            overflow-y: auto;
+        }
+
+        .friend-modal.active {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: modalFade 0.35s ease;
+        }
+
+        .friend-content {
+            width: 100%;
+            max-width: 1000px;
+            background: linear-gradient(145deg, #fffafd, #fff0f7);
+            border-radius: 30px;
+            padding: 35px;
+            position: relative;
+            border: 2px solid white;
+            box-shadow:
+                0 0 20px rgba(255,166,203,0.7),
+                0 0 55px rgba(232,93,145,0.4),
+                0 20px 70px rgba(90,30,60,0.35);
+            animation: schoolGlow 2.2s ease-in-out infinite;
+        }
+
+        .friend-title {
+            text-align: center;
+            color: #df4f87;
+            font-size: 30px;
+            margin-bottom: 8px;
+            text-shadow: 0 0 12px rgba(232,93,145,0.4);
+        }
+
+        .friend-subtitle {
+            text-align: center;
+            color: #9d657c;
+            margin-bottom: 25px;
+        }
+
+        .friend-close {
+            position: absolute;
+            right: 22px;
+            top: 15px;
+            border: none;
+            background: #ffe0eb;
+            color: #df4f87;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            font-size: 22px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .friend-close:hover {
+            transform: rotate(90deg) scale(1.08);
+            box-shadow: 0 0 18px rgba(232,93,145,0.7);
+        }
+
+        .friend-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        
+
+        .friend-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow:
+                0 0 16px rgba(232,93,145,0.55),
+                0 0 35px rgba(255,182,211,0.75);
+        }
+
+        .friend-photo {
+            width: 100%;
+            height: 190px;
+            border-radius: 18px;
+            background: #ffcfe1;
+            border: 2px dashed #e85d91;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #a65376;
+            font-size: 13px;
+            margin-bottom: 12px;
+        }
+
+        .friend-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .friend-card h3 {
+            color: #df4f87;
+            margin-bottom: 5px;
+        }
+
+
+        .friend-placeholder {
+            width: 100%;
+            height: 100%;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 42px;
+            color: #a65376;
+            text-align: center;
+        }
+
+        .friend-placeholder span {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .friend-placeholder small {
+            font-size: 12px;
+            opacity: 0.75;
+        }
+
+        @media (max-width: 768px) {
+            .friend-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .friend-content {
+                padding: 28px 20px;
+            }
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: #ed6c9d;
+            color: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+
+            nav {
+                padding: 15px 5%;
+            }
+
+            nav ul {
+                gap: 12px;
+                font-size: 13px;
+            }
+
+            .hero {
+                padding: 35px 5%;
+            }
+
+            .profile-card {
+                flex-direction: column;
+                text-align: center;
+                padding: 35px 20px;
+                gap: 25px;
+            }
+
+            .photo-box {
+                width: 230px;
+                height: 230px;
+            }
+
+            .school-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .school-content {
+                padding: 28px 20px;
+            }
+
+            .school-button {
+                padding: 8px 12px;
+                font-size: 13px;
+            }
+
+            .hero-text h1 {
+                font-size: 36px;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 60px 5%;
+            }
+
+            .bio-row {
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            .bio-label,
+            .bio-value {
+                width: 100%;
+            }
+        }
+    
+        .friend-card {
+            width: auto;
+            min-height: 190px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+        }
+
+        
+
+        
+    
+        .friend-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            max-width: 1000px;
+            margin: 25px auto 0;
+        }
+
+        .friend-card {
+            grid-column: 2;
+            width: 100%;
+            min-height: 0;
+            box-sizing: border-box;
+            margin: 0;
+            cursor: pointer;
+        }
+
+        @media (max-width: 700px) {
+            .friend-row {
+                grid-template-columns: 1fr;
+            }
+
+            .friend-card {
+                grid-column: 1;
+            }
+        }
+
+    
+        /* My Pet */
+        .pet-row {
+            margin-top: 25px;
+        }
+
+        .pet-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 120;
+            background: rgba(86,36,59,0.55);
+            backdrop-filter: blur(9px);
+            padding: 30px;
+            overflow-y: auto;
+        }
+
+        .pet-modal.active {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: modalFade 0.35s ease;
+        }
+
+        .pet-content {
+            width: 100%;
+            max-width: 620px;
+            background: linear-gradient(145deg, #fffafd, #fff0f7);
+            border-radius: 30px;
+            padding: 35px;
+            position: relative;
+            border: 2px solid white;
+            box-shadow:
+                0 0 20px rgba(255,166,203,0.7),
+                0 0 55px rgba(232,93,145,0.4),
+                0 20px 70px rgba(90,30,60,0.35);
+            animation: schoolGlow 2.2s ease-in-out infinite;
+            text-align: center;
+        }
+
+        .pet-title {
+            color: #df4f87;
+            font-size: 30px;
+            margin-bottom: 8px;
+            text-shadow: 0 0 12px rgba(232,93,145,0.4);
+        }
+
+        .pet-subtitle {
+            color: #9d657c;
+            margin-bottom: 25px;
+        }
+
+        .pet-close {
+            position: absolute;
+            right: 22px;
+            top: 15px;
+            border: none;
+            background: #ffe0eb;
+            color: #df4f87;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            font-size: 22px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .pet-close:hover {
+            transform: rotate(90deg) scale(1.08);
+            box-shadow: 0 0 18px rgba(232,93,145,0.7);
+        }
+
+        .pet-photo {
+            width: min(420px, 90%);
+            aspect-ratio: 1 / 1;
+            margin: auto;
+            border-radius: 22px;
+            background: #ffcfe1;
+            border: 3px dashed #e85d91;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #a65376;
+            box-shadow:
+                0 0 14px rgba(232,93,145,0.35),
+                0 0 28px rgba(255,182,211,0.45);
+        }
+
+        .pet-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .pet-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 48px;
+            color: #a65376;
+        }
+
+        .pet-placeholder span {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .pet-placeholder small {
+            font-size: 13px;
+            opacity: 0.75;
+        }
+
+
+        /* FRIEND + PET SEJAJAR */
+        .friend-pet-row {
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            gap: 25px;
+            max-width: 1000px;
+            margin: 25px auto 0;
+        }
+
+        .friend-pet-row .friend-card {
+            flex: 0 1 calc((100% - 50px) / 3);
+            width: calc((100% - 50px) / 3);
+            min-height: 190px;
+            margin: 0;
+            cursor: pointer;
+        }
+
+        .friend-pet-row .pet-card-main {
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .friend-pet-row {
+                flex-direction: column;
+                max-width: 100%;
+            }
+
+            .friend-pet-row .friend-card {
+                width: 100%;
+                flex-basis: auto;
+            }
+        }
+
+
+
+        /* MY PKL */
+        .pkl-card-main {
+            cursor: pointer;
+        }
+
+        .pkl-card-main:hover {
+            box-shadow:
+                0 0 16px rgba(232,93,145,0.55),
+                0 0 35px rgba(255,182,211,0.75),
+                0 12px 28px rgba(210,90,140,0.18);
+        }
+
+        .pkl-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 130;
+            background: rgba(86,36,59,0.55);
+            backdrop-filter: blur(9px);
+            padding: 30px;
+            overflow-y: auto;
+        }
+
+        .pkl-modal.active {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: modalFade 0.35s ease;
+        }
+
+        .pkl-content {
+            width: 100%;
+            max-width: 1050px;
+            max-height: 90vh;
+            overflow-y: auto;
+            background: linear-gradient(145deg, #fffafd, #fff0f7);
+            border-radius: 30px;
+            padding: 35px;
+            position: relative;
+            border: 2px solid white;
+            box-shadow:
+                0 0 20px rgba(255,166,203,0.7),
+                0 0 55px rgba(232,93,145,0.4),
+                0 20px 70px rgba(90,30,60,0.35);
+            animation: schoolGlow 2.2s ease-in-out infinite;
+        }
+
+        .pkl-close {
+            position: absolute;
+            right: 22px;
+            top: 15px;
+            border: none;
+            background: #ffe0eb;
+            color: #df4f87;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            font-size: 22px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .pkl-close:hover {
+            transform: rotate(90deg) scale(1.08);
+            box-shadow: 0 0 18px rgba(232,93,145,0.7);
+        }
+
+        .pkl-title {
+            text-align: center;
+            color: #df4f87;
+            font-size: 30px;
+            margin-bottom: 8px;
+            text-shadow: 0 0 12px rgba(232,93,145,0.4);
+        }
+
+        .pkl-subtitle {
+            text-align: center;
+            color: #9d657c;
+            margin-bottom: 28px;
+        }
+
+        .pkl-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .pkl-photo-card {
+            background: rgba(255,255,255,0.94);
+            border-radius: 22px;
+            padding: 14px;
+            border: 2px solid #ffe1ec;
+            text-align: center;
+            transition: 0.35s ease;
+            box-shadow: 0 8px 22px rgba(210,90,140,0.1);
+        }
+
+        .pkl-photo-card:hover {
+            transform: translateY(-7px);
+            box-shadow:
+                0 0 16px rgba(232,93,145,0.5),
+                0 0 32px rgba(255,182,211,0.75),
+                0 12px 24px rgba(210,90,140,0.15);
+        }
+
+        .pkl-photo {
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            border-radius: 17px;
+            background: #ffcfe1;
+            border: 2px dashed #e85d91;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #a65376;
+            margin-bottom: 12px;
+        }
+
+        .pkl-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .pkl-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+            font-size: 38px;
+            color: #a65376;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .pkl-placeholder span {
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .pkl-placeholder small {
+            font-size: 11px;
+            opacity: 0.75;
+        }
+
+        .pkl-photo-card h3 {
+            color: #df4f87;
+            margin-bottom: 5px;
+            font-size: 17px;
+        }
+
+        .pkl-photo-card p {
+            color: #9d657c;
+            font-size: 13px;
+            line-height: 1.45;
+        }
+
+        @media (max-width: 900px) {
+            .pkl-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .pkl-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pkl-content {
+                padding: 28px 20px;
+            }
+        }
+
+
+
+        /* ✨ EXTRA HEB0H CURSOR + FLOATING DECOR */
+        .cursor-glow,
+        .cursor-trail,
+        .cursor-burst {
+            position: fixed;
+            pointer-events: none;
+            user-select: none;
+            z-index: 99999;
+        }
+
+        .cursor-glow {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            background: radial-gradient(circle, rgba(255,255,255,0.95) 0%, rgba(255,182,211,0.75) 28%, rgba(237,108,157,0.2) 65%, transparent 72%);
+            filter: blur(0.5px);
+            mix-blend-mode: screen;
+        }
+
+        .cursor-ring {
+            position: fixed;
+            width: 34px;
+            height: 34px;
+            border: 2px solid rgba(237,108,157,0.5);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 99998;
+            box-shadow: 0 0 12px rgba(255,182,211,0.7), 0 0 28px rgba(237,108,157,0.35);
+            transition: width .16s ease, height .16s ease, border-color .16s ease;
+        }
+
+        .cursor-ring.active {
+            width: 48px;
+            height: 48px;
+            border-color: rgba(237,108,157,0.85);
+        }
+
+        .cursor-trail {
+            transform: translate(-50%, -50%);
+            font-size: 16px;
+            color: #ed6c9d;
+            text-shadow: 0 0 7px rgba(255,255,255,0.95), 0 0 13px rgba(232,93,145,0.85), 0 0 24px rgba(255,182,211,0.95);
+            animation: cursorTrailPop 850ms ease-out forwards;
+        }
+
+        @keyframes cursorTrailPop {
+            0% { opacity: 1; transform: translate(-50%, -50%) scale(.55) rotate(0deg); }
+            35% { opacity: 1; transform: translate(-50%, -60%) scale(1.15) rotate(10deg); }
+            100% { opacity: 0; transform: translate(calc(-50% + var(--drift-x)), calc(-50% - 70px)) scale(.75) rotate(28deg); }
+        }
+
+        .cursor-burst {
+            left: 0;
+            top: 0;
+            transform: translate(-50%, -50%);
+            font-size: 18px;
+            color: #ed6c9d;
+            text-shadow: 0 0 8px rgba(255,255,255,.95), 0 0 16px rgba(232,93,145,.9);
+            animation: burstFly 900ms cubic-bezier(.16,.8,.3,1) forwards;
+        }
+
+        @keyframes burstFly {
+            0% { opacity: 1; transform: translate(-50%, -50%) rotate(0deg) scale(.4); }
+            100% { opacity: 0; transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) rotate(var(--rot)) scale(1.1); }
+        }
+
+        .floating-decor {
+            position: fixed;
+            z-index: 0;
+            pointer-events: none;
+            user-select: none;
+            opacity: 0.6;
+            filter: drop-shadow(0 0 7px rgba(232,93,145,0.38));
+            animation: floatDecor 7s ease-in-out infinite;
+        }
+
+        .floating-decor.one { left: 4%; top: 20%; font-size: 24px; animation-delay: 0s; }
+        .floating-decor.two { right: 5%; top: 34%; font-size: 20px; animation-delay: 1.2s; }
+        .floating-decor.three { left: 8%; top: 68%; font-size: 18px; animation-delay: 2.4s; }
+        .floating-decor.four { right: 9%; top: 76%; font-size: 26px; animation-delay: 3.3s; }
+        .floating-decor.five { left: 48%; top: 14%; font-size: 16px; animation-delay: 4.1s; }
+        .floating-decor.six { right: 43%; top: 84%; font-size: 18px; animation-delay: 1.8s; }
+        .floating-decor.seven { left: 18%; top: 45%; font-size: 14px; animation-delay: 2.8s; }
+        .floating-decor.eight { right: 18%; top: 52%; font-size: 17px; animation-delay: 4.8s; }
+        .floating-decor.nine { left: 70%; top: 24%; font-size: 13px; animation-delay: 1.5s; }
+        .floating-decor.ten { left: 30%; top: 78%; font-size: 15px; animation-delay: 5.1s; }
+
+        @keyframes floatDecor {
+            0%, 100% { transform: translateY(0) translateX(0) rotate(0deg) scale(1); }
+            25% { transform: translateY(-10px) translateX(5px) rotate(-5deg) scale(1.04); }
+            50% { transform: translateY(-22px) translateX(-4px) rotate(8deg) scale(1.1); }
+            75% { transform: translateY(-10px) translateX(4px) rotate(-3deg) scale(1.04); }
+        }
+
+/* MY THOUGHTS */
+        .thoughts-wrap {
+            max-width: 850px;
+            margin: auto;
+        }
+
+        .thought-card {
+            position: relative;
+            background: linear-gradient(145deg, rgba(255,255,255,0.94), rgba(255,241,248,0.94));
+            border: 2px solid white;
+            border-radius: 30px;
+            padding: 42px 38px 32px;
+            text-align: center;
+            box-shadow: 0 12px 35px rgba(210,90,140,0.14);
+            overflow: hidden;
+        }
+
+        .thought-card::before {
+            content: "";
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            top: -70px;
+            right: -50px;
+            background: rgba(255,182,211,0.22);
+            filter: blur(8px);
+        }
+
+        .thought-icon {
+            font-size: 42px;
+            margin-bottom: 10px;
+            filter: drop-shadow(0 0 8px rgba(232,93,145,0.28));
+        }
+
+        .thought-quote {
+            min-height: 95px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 21px;
+            line-height: 1.7;
+            color: #75475b;
+            font-style: italic;
+            padding: 5px 22px;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .thought-author {
+            margin-top: 8px;
+            color: #df4f87;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .thought-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 22px;
+        }
+
+        .thought-dot {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: #f3c4d8;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .thought-dot.active {
+            width: 24px;
+            border-radius: 10px;
+            background: #ed6c9d;
+            box-shadow: 0 0 10px rgba(237,108,157,0.45);
+        }
+
+        .thought-note {
+            margin-top: 18px;
+            color: #a36b83;
+            font-size: 13px;
+        }
+
+        .thought-card:hover {
+            box-shadow:
+                0 0 16px rgba(232,93,145,0.38),
+                0 0 34px rgba(255,182,211,0.5),
+                0 12px 35px rgba(210,90,140,0.15);
+            transform: translateY(-4px);
+            transition: 0.4s ease;
+        }
+
+        @media (max-width: 600px) {
+            .thought-card { padding: 35px 18px 26px; }
+            .thought-quote { font-size: 18px; min-height: 125px; padding: 5px 8px; }
+        }
+
+    
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav>
+        <div class="logo">♡ Profile sayaa</div>
+
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#hobby">Hobbies</a></li>
+            <li><a href="#thoughts">Thoughts</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+
+        <div class="profile-card">
+
+            <!-- GANTI FOTO DI SINI -->
+            <div class="photo-box">
+                <img src="c:\Users\DELL LATITUDE\Downloads\imut.jpeg" alt="Foto Profil">
+            </div>
+
+            <div class="hero-text">
+
+                <h1>halooo, inii rinii</h1>
+
+                <h2>Mahasiswa prodi ilmu komputer</h2>
+
+                <p>
+                    Welcome to profile aku yakk
+                </p>
+
+                <a href="#about" class="button">
+                    Kenalan Yukzz
+                </a>
+
+                <br>
+
+                <button class="school-button hero-school-button" id="schoolBtn" onclick="openSchool()">
+                    🎓 Lihat Riwayat Sekolah
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+    <section id="about">
+
+        <div class="title">
+            <h2>About Me ♡</h2>
+            <p>Sedikit cerita tentang saya</p>
+        </div>
+
+        <div class="biodata">
+
+            <div class="bio-row">
+                <div class="bio-label">Nama</div>
+                <div class="bio-value">Rini aryanti siregar</div>
+            </div>
+
+            <div class="bio-row">
+                <div class="bio-label">Status</div>
+                <div class="bio-value">Mahasiswa</div>
+            </div>
+
+            <div class="bio-row">
+                <div class="bio-label">Prodi</div>
+                <div class="bio-value">Ilmu komputer</div>
+            </div>
+
+            <div class="bio-row">
+                <div class="bio-label">Universitas</div>
+                <div class="bio-value">Unimed</div>
+            </div>
+
+            <div class="bio-row">
+                <div class="bio-label">Anak ke</div>
+                <div class="bio-value">Anak ke 1 dari 3 bersaudara</div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- MY HOBBIES -->
+    <section id="hobby">
+
+        <div class="title">
+            <h2>My Hobbies ♡</h2>
+            <p>Beberapa kegiatan yang saya sukai</p>
+        </div>
+
+        <div class="cards">
+
+            <div class="card">
+                <div class="icon">🎧</div>
+                <h3>Mendengarkan Musik</h3>
+                <p>
+                    i suka mendengarkan musik untuk menemani
+                    waktu santai dan aktivitas sehari-hari.
+                </p>
+                <audio controls style="width: 100%; margin-top: 12px;">
+                    <source src="c:\\Users\\DELL LATITUDE\\Downloads\\Aziz Hedra - Somebody's Pleasure (Extended Version) - Official Lyric Video.mp3" type="audio/mpeg">
+                    Browser kamu tidak mendukung pemutar audio.
+                </audio>
+            </div>
+
+            <div class="card">
+                <div class="icon">🏸</div>
+                <h3>Bermain Badminton</h3>
+                <p>
+                    Bermain badminton menjadi salah satu kegiatan
+                    yang saya lakukan untuk olahraga dan bersenang-senang.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="icon">🎨</div>
+                <h3>Design</h3>
+                <p>
+                    i suka membuat desain sederhana dan
+                    mencoba berbagai ide visual yang kreatif.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- MY THOUGHTS -->
+    <section id="thoughts">
+
+        <div class="title">
+            <h2>My Thoughts 💭</h2>
+            <p>sedikit isi hati dan pikiran aku ♡</p>
+        </div>
+
+        <div class="thoughts-wrap">
+            <div class="thought-card">
+                <div class="thought-icon">💭</div>
+                <div class="thought-quote" id="thoughtQuote">“Orang yang kuat bukan mereka yang tidak pernah menangis, namun mereka yang tetap bangkit meski jatuh berkali-kali.”</div>
+                <div class="thought-author">— riniii ♡</div>
+
+                <div class="thought-dots" id="thoughtDots"></div>
+                <div class="thought-note">♡ thought of the day ♡</div>
+            </div>
+        </div>
+
+    </section>
+
+
+
+    <!-- HOBI -->
+    <section>
+
+        <div class="title">
+            <h2>My Favorites ♡</h2>
+            <p>Beberapa hal yang saya sukai</p>
+        </div>
+
+        <div class="cards">
+
+            <div class="card">
+                <div class="icon">🎌</div>
+                <h3>Anime</h3>
+                <p>belajar bahasa jepang dari anime</p>
+            </div>
+
+            <div class="card">
+                <div class="icon">🍜</div>
+                <h3>Food</h3>
+                <p>i suka mie ayamm</p>
+            </div>
+
+            <div class="card">
+                <div class="icon">🎧</div>
+                <h3>Music</h3>
+                <p>Lagu fav aku banget tuhh somebody pleasure.</p>
+                <audio controls="">
+                    <source src="c:\Users\DELL LATITUDE\Downloads\Aziz Hedra - Somebody's Pleasure (Extended Version) - Official Lyric Video.mp3">
+                </audio>
+            </div>
+
+        </div>
+
+        <div class="friend-pet-row">
+            <div class="card friend-card" id="friendBtn" onclick="openFriends()">
+                <div class="icon">👯</div>
+                <h3>temen ✨</h3>
+                <p>Klik untuk melihat slot foto teman</p>
+            </div>
+
+            <div class="card friend-card pet-card-main" id="petBtn" onclick="openPet()">
+                <div class="icon">🐾</div>
+                <h3>Cuking🐾</h3>
+                <p>Klik untuk melihat 1 foto pet aku</p>
+            </div>
+
+            <div class="card friend-card pkl-card-main" id="pklBtn" onclick="openPKL()">
+                <div class="icon">💼</div>
+                <h3>My PKL Journey ✨</h3>
+                <p>Klik untuk melihat foto pengalaman PKL</p>
+            </div>
+        </div>
+
+    </section>
+
+
+
+
+    <!-- MODAL MY PET -->
+    <div class="pet-modal" id="petModal">
+        <div class="pet-content">
+            <button class="pet-close" onclick="closePet()">×</button>
+
+            <h2 class="pet-title">🐾 cuking akuu♡</h2>
+            <p class="pet-subtitle">cuking fav aku namanya martalo✨</p>
+
+            <div class="pet-photo">
+                <img src="c:\Users\DELL LATITUDE\Downloads\WhatsApp Image 2026-09-28 at 20.46.13.jpeg" alt="Foto Pet" onerror="this.style.display='none'; document.getElementById('petPlaceholder').style.display='flex';">
+                <div class="pet-placeholder" id="petPlaceholder" style="display:none;">
+                    🐾
+                    <span>cuking fav aku</span>
+                    <small>Nama file: foto-pet.jpg</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL MY FRIENDS -->
+    <div class="friend-modal" id="friendModal">
+        <div class="friend-content">
+            <button class="friend-close" onclick="closeFriends()">×</button>
+
+            <h2 class="friend-title">👯 My Friends ♡</h2>
+            <p class="friend-subtitle">orang-orang yang selalu bikin hari i lebih seru ✨</p>
+
+            <div class="friend-grid">
+
+                <div class="friend-card">
+                    <div class="friend-photo">
+                        <img src="foto-friend-1.jpg" alt="Foto Friend 1"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="friend-placeholder">
+                            👯
+                            <span>Slot Foto Friend 1</span>
+                            <small>Nama file: foto-friend-1.jpg</small>
+                        </div>
+                    </div>
+                    
+                    <p> ♡</p>
+                </div>
+
+                <div class="friend-card">
+                    <div class="friend-photo">
+                        <img src="c:\Users\DELL LATITUDE\Downloads\WhatsApp Image 2026-09-28 at 21.10.10.jpeg" alt="Foto Friend 2"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="friend-placeholder">
+                            👯
+                            <span>Slot Foto Friend 2</span>
+                            <small>Nama file: foto-friend-2.jpg</small>
+                        </div>
+                    </div>
+                    
+                    <p>♡</p>
+                </div>
+
+                <div class="friend-card">
+                    <div class="friend-photo">
+                        <img src="c:\Users\DELL LATITUDE\Downloads\WhatsApp Image 2026-09-28 at 21.10.11.jpeg" alt="Foto Friend 3"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="friend-placeholder">
+                            👯
+                            <span>Slot Foto Friend 3</span>
+                            <small>Nama file: foto-friend-3.jpg</small>
+                        </div>
+                    </div>
+                    
+                    <p>♡</p>
+                </div>
+
+                <div class="friend-card">
+                    <div class="friend-photo">
+                        <img src="c:\Users\DELL LATITUDE\Downloads\WhatsApp Image 2026-09-28 at 21.13.32 - Copy.jpeg" alt="Foto Friend 4"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="friend-placeholder">
+                            👯
+                            <span>Slot Foto Friend 4</span>
+                            <small>Nama file: foto-friend-4.jpg</small>
+                        </div>
+                    </div>
+                    
+                    <p>♡</p>
+                </div>
+
+                <div class="friend-card">
+                    <div class="friend-photo">
+                        <img src="c:\Users\DELL LATITUDE\Downloads\WhatsApp Image 2026-09-28 at 21.10.13 (1).jpeg" alt="Foto Friend 5"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="friend-placeholder">
+                            👯
+                            <span>Slot Foto Friend 5</span>
+                            <small>Nama file: foto-friend-5.jpg</small>
+                        </div>
+                    </div>
+                    
+                    <p>♡</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL RIWAYAT SEKOLAH -->
+    <div class="school-modal" id="schoolModal">
+        <div class="school-content">
+            <button class="school-close" onclick="closeSchool()">×</button>
+            <h2 class="school-title">🎓 Riwayat Sekolah Aku</h2>
+
+            <div class="school-grid">
+
+                <div class="school-card">
+                    <div class="school-photo">
+                        <img src="c:\Users\DELL LATITUDE\Downloads\sd.jpg" alt="Foto Sekolah SD">
+                    </div>
+                    <h3>SD</h3>
+                    <p><strong>SD N 100703 Batangtoru</strong></p>
+                    <p>Batangtoru, Tapanuli selatan</p>
+                </div>
+
+                <div class="school-card">
+                    <div class="school-photo">
+                        <img src="c:\Users\DELL LATITUDE\Downloads\IMG-41.jpg" alt="Foto Sekolah SMP">
+                    </div>
+                    <h3>SMP</h3>
+                    <p><strong>SMP N 1 Batangtoru</strong></p>
+                    <p>Batangtoru, Tapanuli selatan</p>
+                </div>
+
+                <div class="school-card">
+                    <div class="school-photo">
+                        <img src="c:\Users\DELL LATITUDE\Downloads\images - Copy.jpe" alt="Foto Sekolah SMA/SMK">
+                    </div>
+                    <h3>SMK</h3>
+                    <p><strong>SMA N 1 Padangsidimpuan</strong></p>
+                    <p>Padangsidimpuan, Tapanuli Selatan</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- MODAL MY PKL -->
+    <div class="pkl-modal" id="pklModal">
+        <div class="pkl-content">
+            <button class="pkl-close" onclick="closePKL()">×</button>
+
+            <h2 class="pkl-title">💼 My PKL Experience ♡</h2>
+            <p class="pkl-subtitle">10 kegiatan dan momen pengalaman PKL aku ✨</p>
+
+            <div class="pkl-grid">
+
+                <div class="pkl-photo-card">
+                    <div class="pkl-photo">
+                        <img src="c:\Users\DELL LATITUDE\Downloads\WhatsApp Image 2026-09-28 at 21.36.56.jpeg" alt="Pemasangan PC di Departemen Finance" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="pkl-placeholder" style="display:none;">💼<span>Slot Foto PKL 1</span><small>pkl-1.jpg</small></div>
+                    </div>
+                    <h3>Pemasangan PC di Dept. Finance</h3>
+                </div>
+
+                <div class="pkl-photo-card">
+                    <div class="pkl-photo">
+                        <img src="c:\Users\DELL LATITUDE\Downloads\WhatsApp Image 2026-09-28 at 21.49.41 (1).jpeg" alt="Crimp modular" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="pkl-placeholder" style="display:none;">💼<span>Slot Foto PKL 2</span><small>pkl-2.jpg</small></div>
+                    </div>
+                    <h3>Terminasi Modular</h3>
+                </div>
+
+                <div class="pkl-photo-card">
+                    <div class="pkl-photo">
+                        <img src="c:\Users\DELL LATITUDE\Pictures\fo.jpg" alt="Splicing" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="pkl-placeholder" style="display:none;">💼<span>Slot Foto PKL 3</span><small>pkl-3.jpg</small></div>
+                    </div>
+                    <h3>Splicing</h3>
+                </div>
+
+                <div class="pkl-photo-card">
+                    <div class="pkl-photo">
+                        <img src="c:\Users\DELL LATITUDE\Pictures\crimplan.jpg" alt="Crimp LAN" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="pkl-placeholder" style="display:none;">💼<span>Slot Foto PKL 4</span><small>pkl-4.jpg</small></div>
+                    </div>
+                    <h3>Crimp LAN</h3>
+                </div>
+
+                <div class="pkl-photo-card">
+                    <div class="pkl-photo">
+                        <img src="c:\Users\DELL LATITUDE\Pictures\gantissd.png" alt="Penggantian SSD" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="pkl-placeholder" style="display:none;">💼<span>Slot Foto PKL 5</span><small>pkl-5.jpg</small></div>
+                    </div>
+                    <h3>Penggantian SSD</h3>
+                </div>
+
+                <div class="pkl-photo-card">
+                    <div class="pkl-photo">
+                        <img src="c:\Users\DELL LATITUDE\Pictures\konfcctv.jpg" alt="Konfigurasi CCTV" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="pkl-placeholder" style="display:none;">💼<span>Slot Foto PKL 6</span><small>pkl-6.jpg</small></div>
+                    </div>
+                    <h3>Konfigurasi CCTV</h3>
+                </div>
+
+                <div class="pkl-photo-card">
+                    <div class="pkl-photo">
+                        <img src="c:\Users\DELL LATITUDE\Pictures\teskabel.jpg" alt="Tes jaringan" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="pkl-placeholder" style="display:none;">💼<span>Slot Foto PKL 7</span><small>pkl-7.jpg</small></div>
+                    </div>
+                    <h3>Tes Jaringan</h3>
+                </div>
+
+                <div class="pkl-photo-card">
+                    <div class="pkl-photo">
+                        <img src="c:\Users\DELL LATITUDE\Pictures\ganti psu.jpg" alt="Penggantian PSU" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="pkl-placeholder" style="display:none;">💼<span>Slot Foto PKL 8</span><small>pkl-8.jpg</small></div>
+                    </div>
+                    <h3>Penggantian PSU</h3>
+                </div>
+
+                <div class="pkl-photo-card">
+                    <div class="pkl-photo">
+                        <img src="c:\Users\DELL LATITUDE\Pictures\upram.jpg" alt="Rakit PC" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="pkl-placeholder" style="display:none;">💼<span>Slot Foto PKL 9</span><small>pkl-9.jpg</small></div>
+                    </div>
+                    <h3>Rakit PC</h3>
+                </div>
+
+                <div class="pkl-photo-card">
+                    <div class="pkl-photo">
+                        <img src="c:\Users\DELL LATITUDE\Downloads\WhatsApp Image 2026-09-28 at 21.57.29 (1).jpeg" alt="Tes kabel Fiber Optic" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="pkl-placeholder" style="display:none;">💼<span>Slot Foto PKL 10</span><small>pkl-10.jpg</small></div>
+                    </div>
+                    <h3>Tes Kabel FO</h3>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTACT -->
+    <section id="contact">
+
+        <div class="title">
+            <h2>    Moots yuu ♡</h2>
+            <p>follow yakk</p>
+        </div>
+
+        <div class="social">
+
+            <a href="https://www.instagram.com/rinryntii_?igsi=amw1cGZ4cnBmdnNz" target="_blank">Instagram</a>
+
+            <a href="tiktok.com/@riniinyahaha" target="_blank">TikTok</a>
+
+            <a href="#" target="_blank">GitHub</a>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+        Made with ♡ by Rini
+    </footer>
+
+
+
+
+    <!-- ✨ Floating pink decorations -->
+    <div class="floating-decor one">✦</div>
+    <div class="floating-decor two">♡</div>
+    <div class="floating-decor three">✧</div>
+    <div class="floating-decor four">♥</div>
+    <div class="floating-decor five">⋆</div>
+    <div class="floating-decor six">♡</div>
+    <div class="floating-decor seven">✿</div>
+    <div class="floating-decor eight">✦</div>
+    <div class="floating-decor nine">♡</div>
+    <div class="floating-decor ten">❀</div>
+
+    <div class="cursor-ring" id="cursorRing"></div>
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <script>
+
+        // 💗 Extra heboh cursor: glow + trail + click burst
+        const cursorGlow = document.getElementById("cursorGlow");
+        const cursorRing = document.getElementById("cursorRing");
+        let lastTrail = 0;
+
+        document.addEventListener("mousemove", function(event) {
+            cursorGlow.style.left = event.clientX + "px";
+            cursorGlow.style.top = event.clientY + "px";
+
+            cursorRing.style.left = event.clientX + "px";
+            cursorRing.style.top = event.clientY + "px";
+
+            const now = Date.now();
+            if (now - lastTrail < 55) return;
+            lastTrail = now;
+
+            const trail = document.createElement("span");
+            trail.className = "cursor-trail";
+            trail.textContent = ["♡", "♥", "✦", "✧", "⋆", "✿", "❀"][Math.floor(Math.random() * 7)];
+            trail.style.left = event.clientX + "px";
+            trail.style.top = event.clientY + "px";
+            trail.style.fontSize = (11 + Math.random() * 14) + "px";
+            trail.style.setProperty("--drift-x", (Math.random() * 80 - 40) + "px");
+            document.body.appendChild(trail);
+            setTimeout(() => trail.remove(), 900);
+        });
+
+        document.addEventListener("mouseenter", () => cursorRing.classList.add("active"));
+        document.addEventListener("mouseleave", () => cursorRing.classList.remove("active"));
+
+        document.addEventListener("click", function(event) {
+            const symbols = ["♡", "♥", "✦", "✧", "⋆", "✿", "❀"];
+            const count = 14;
+
+            for (let i = 0; i < count; i++) {
+                const burst = document.createElement("span");
+                burst.className = "cursor-burst";
+                burst.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+                burst.style.left = event.clientX + "px";
+                burst.style.top = event.clientY + "px";
+                burst.style.setProperty("--x", (Math.random() * 180 - 90) + "px");
+                burst.style.setProperty("--y", (Math.random() * 180 - 90) + "px");
+                burst.style.setProperty("--rot", (Math.random() * 240 - 120) + "deg");
+                burst.style.fontSize = (13 + Math.random() * 12) + "px";
+                document.body.appendChild(burst);
+                setTimeout(() => burst.remove(), 950);
+            }
+        });
+
+
+        function openPet() {
+            const modal = document.getElementById("petModal");
+            const btn = document.getElementById("petBtn");
+
+            modal.classList.add("active");
+            btn.classList.add("active");
+            document.body.style.overflow = "hidden";
+        }
+
+        function closePet() {
+            const modal = document.getElementById("petModal");
+            const btn = document.getElementById("petBtn");
+
+            modal.classList.remove("active");
+            btn.classList.remove("active");
+            document.body.style.overflow = "auto";
+        }
+
+        document.getElementById("petModal").addEventListener("click", function(event) {
+            if (event.target === this) {
+                closePet();
+            }
+        });
+
+        function openFriends() {
+            const modal = document.getElementById("friendModal");
+            const btn = document.getElementById("friendBtn");
+
+            modal.classList.add("active");
+            btn.classList.add("active");
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeFriends() {
+            const modal = document.getElementById("friendModal");
+            const btn = document.getElementById("friendBtn");
+
+            modal.classList.remove("active");
+            btn.classList.remove("active");
+            document.body.style.overflow = "auto";
+        }
+
+        document.getElementById("friendModal").addEventListener("click", function(event) {
+            if (event.target === this) {
+                closeFriends();
+            }
+        });
+
+        function openSchool() {
+            const modal = document.getElementById("schoolModal");
+            const btn = document.getElementById("schoolBtn");
+
+            modal.classList.add("active");
+            btn.classList.add("active");
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeSchool() {
+            const modal = document.getElementById("schoolModal");
+            const btn = document.getElementById("schoolBtn");
+
+            modal.classList.remove("active");
+            btn.classList.remove("active");
+            document.body.style.overflow = "auto";
+        }
+
+        document.getElementById("schoolModal").addEventListener("click", function(event) {
+            if (event.target === this) {
+                closeSchool();
+            }
+        });
+
+        document.addEventListener("keydown", function(event) {
+            if (event.key === "Escape") {
+                closePet();
+                closeFriends();
+                closeSchool();
+            }
+        });
+
+
+        function openPKL() {
+            const modal = document.getElementById("pklModal");
+            const btn = document.getElementById("pklBtn");
+            modal.classList.add("active");
+            btn.classList.add("active");
+            document.body.style.overflow = "hidden";
+        }
+
+        function closePKL() {
+            const modal = document.getElementById("pklModal");
+            const btn = document.getElementById("pklBtn");
+            modal.classList.remove("active");
+            btn.classList.remove("active");
+            document.body.style.overflow = "auto";
+        }
+
+        document.getElementById("pklModal").addEventListener("click", function(event) {
+            if (event.target === this) {
+                closePKL();
+            }
+        });
+
+
+        // My Thoughts slideshow
+        const thoughts = [
+            '“Orang yang kuat bukan mereka yang tidak pernah menangis, namun mereka yang tetap bangkit meski jatuh berkali-kali.”',
+            '“Jalan hidup tak selalu lurus, tapi setiap tikungan selalu membawa pelajaran.”',
+            '“Jangan membandingkan dirimu dengan orang lain, fokuslah pada perjalananmu sendiri.”',
+            '“Lelah itu sementara, tapi hasil dari perjuangan bisa menjadi cerita yang membanggakan.”'
+        ];
+
+        const thoughtQuote = document.getElementById('thoughtQuote');
+        const thoughtDots = document.getElementById('thoughtDots');
+        let thoughtIndex = 0;
+
+        thoughts.forEach((_, index) => {
+            const dot = document.createElement('span');
+            dot.className = 'thought-dot' + (index === 0 ? ' active' : '');
+            dot.addEventListener('click', () => showThought(index));
+            thoughtDots.appendChild(dot);
+        });
+
+        function showThought(index) {
+            thoughtIndex = index;
+            thoughtQuote.style.opacity = '0';
+            thoughtQuote.style.transform = 'translateY(5px)';
+
+            setTimeout(() => {
+                thoughtQuote.textContent = thoughts[thoughtIndex];
+                thoughtQuote.style.opacity = '1';
+                thoughtQuote.style.transform = 'translateY(0)';
+
+                document.querySelectorAll('.thought-dot').forEach((dot, i) => {
+                    dot.classList.toggle('active', i === thoughtIndex);
+                });
+            }, 180);
+        }
+
+        setInterval(() => {
+            showThought((thoughtIndex + 1) % thoughts.length);
+        }, 4500);
+
+    </script>
+
+</body>
+</html>
